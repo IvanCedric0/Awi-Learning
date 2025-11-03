@@ -1,26 +1,30 @@
+import { link } from "fs";
 
 
 export const HomePageCOURSES = [
   {
-    title: "Comprendre l'Intelligence Artificielle",
+    title: "Introduction à l'Intelligence Artificielle",
     level: "Débutant",
-    img: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=1600&auto=format&fit=crop",
+    img: "/images/intro-ia.jpg",
     hours: 12,
     bullets: ["Fondamentaux de l'IA", "Cas d'usages métiers", "Mini‑projet guidé"],
+    link: '/courses/decouvrir-intelligence-artificielle'
   },
   {
-    title: "Blockchain pour les décideurs",
-    level: "Intermédiaire",
-    img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1600&auto=format&fit=crop",
+    title: "Introduction à la Blockchain",
+    level: "Débutant",
+    img: "/images/into-blockchain.jpg",
     hours: 10,
     bullets: ["Fonctionnement", "Wallets & sécurité", "Tokenomics de base"],
+    link: '/courses/introduction-blockchain'
   },
   {
-    title: "Management & Contrôle de Gestion",
-    level: "Pro",
-    img: "https://images.unsplash.com/photo-1556742400-b5b7c5121f90?q=80&w=1600&auto=format&fit=crop",
+    title: "Introduction au Web 3.0: L'avenir d'Internet",
+    level: "Débutant",
+    img: "/images/intro-web3.jpg",
     hours: 16,
     bullets: ["Budgets & KPI", "Tableaux de bord", "Étude de cas OIA Anacarde"],
+    link: '/courses/web3-modeles-economiques'
   },
 ];
 
@@ -42,7 +46,7 @@ export const FAQ = [
 export type Course = {
   slug: string;
   title: string;
-  category: "Blockchain" | "IA" | "Web 3";
+  category: "Blockchain" | "IA" | "Web 3" | "Developpement";
   description: string;
   thumbnail: string;
   level?: "Débutant" | "Intermédiaire" | "Avancé";
@@ -58,7 +62,7 @@ export const COURSES: Course[] = [
     description:
       "Comprendre les fondements de la blockchain, son fonctionnement et ses applications concrètes dans la finance, l’agro et la supply chain.",
     thumbnail:
-      "https://images.unsplash.com/photo-1646422235140-7f0c9e1f97e2?q=80&w=1200&auto=format&fit=crop",
+      "/images/into-blockchain.jpg",
     level: "Débutant",
     durationH: 6,
     lessons: [
@@ -69,12 +73,12 @@ export const COURSES: Course[] = [
   },
   {
     slug: "decouvrir-intelligence-artificielle",
-    title: "Découvrir l’Intelligence Artificielle",
+    title: "Introduction à l’Intelligence Artificielle",
     category: "IA",
     description:
       "Initiation à l’IA : historique, familles de modèles, usages métiers, limites et éthique.",
     thumbnail:
-      "https://images.unsplash.com/photo-1581093588401-22f88f0d1e54?q=80&w=1200&auto=format&fit=crop",
+      "/images/intro-ia.jpg",
     level: "Débutant",
     durationH: 5,
     lessons: [
@@ -85,12 +89,12 @@ export const COURSES: Course[] = [
   },
   {
     slug: "web3-modeles-economiques",
-    title: "Web 3 et nouveaux modèles économiques",
+    title: "Introduction au Web 3.0: L'avenir d'Internet",
     category: "Web 3",
     description:
       "Comprendre les smart contracts, les tokens et les mécanismes économiques de la décentralisation.",
     thumbnail:
-      "https://images.unsplash.com/photo-1642152240564-76360b30f9cf?q=80&w=1200&auto=format&fit=crop",
+      "/images/intro-web3.jpg",
     level: "Intermédiaire",
     durationH: 7,
     lessons: [
@@ -100,13 +104,13 @@ export const COURSES: Course[] = [
     ],
   },
   {
-    slug: "applications-avancees-ia",
-    title: "Applications avancées de l’IA",
+    slug: "utilisation-ia-generative",
+    title: "Comment utiliser l’IA générative au quotidien ?",
     category: "IA",
     description:
-      "Construire des cas d’usage : classification, embeddings, RAG, automatisation des processus.",
+      "Comprendre les usages de l’IA générative et ses limites. Outils et cas d’utilisation pratiques.",
     thumbnail:
-      "https://images.unsplash.com/photo-1680191764408-0a0e2c91a7d1?q=80&w=1200&auto=format&fit=crop",
+      "/images/utilisation-ia-gen.png",
     level: "Intermédiaire",
     durationH: 8,
     lessons: [
@@ -116,14 +120,14 @@ export const COURSES: Course[] = [
     ],
   },
   {
-    slug: "blockchain-securite-donnees",
-    title: "Blockchain et sécurité des données",
-    category: "Blockchain",
+    slug: "html-css-javascript",
+    title: "HTML, CSS & JavaScript",
+    category: "Developpement",
     description:
-      "Traçabilité, immutabilité et conformité : ce que change la blockchain pour la gouvernance des données.",
+      "Créer vos premiers sites web static avec les langages de programmation HTML, CSS et JavaScript.",
     thumbnail:
       "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=1200&auto=format&fit=crop",
-    level: "Avancé",
+    level: "Débutant",
     durationH: 6,
     lessons: [
       { id: "l1", title: "Sécurité & cryptographie", durationMin: 24 },

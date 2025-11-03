@@ -22,7 +22,7 @@ export default function CoursesPage() {
       </section>
 
       <div className="mx-auto max-w-6xl px-4 mb-10 flex justify-center flex-wrap gap-3">
-        {["Tous", "Blockchain", "IA", "Web 3"].map((cat) => (
+        {["Tous", "Blockchain", "IA", "Web 3", "Developpement"].map((cat) => (
           <button
             key={cat}
             onClick={() => setCategory(cat as any)}

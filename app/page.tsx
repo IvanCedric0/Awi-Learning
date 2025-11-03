@@ -1,8 +1,4 @@
 "use client"
-
-import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { ArrowRight, CheckCircle2, PlayCircle, Sparkles, Shield, Clock, BookOpen, Users, ChevronDown } from "lucide-react";
 import Hero from "./components/homepage/hero";
 import Benefits from "./components/homepage/benefits";
 import Courses from "./components/homepage/courses";

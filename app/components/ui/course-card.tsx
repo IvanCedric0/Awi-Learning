@@ -2,6 +2,7 @@ import { HomePageCOURSES as COURSES } from "@/app/lib/data";
 import {BookOpen, Shield, CheckCircle2, PlayCircle } from "lucide-react";
 import { motion} from "motion/react";
 import { Pill } from "./pill";
+import Link from "next/link";
 
 export default function CourseCard({ course, i }:{ course: typeof COURSES[number]; i: number; }) {
     const stagger = (delay = 0.1) => ({
@@ -40,9 +41,9 @@ export default function CourseCard({ course, i }:{ course: typeof COURSES[number
           ))}
         </ul>
         <div className="mt-4 flex items-center justify-between">
-          <button className="rounded-xl px-4 py-2 text-sm font-semibold text-white bg-orange-500 hover:bg-orange-600">
+          <Link href={course.link} className="rounded-xl px-4 py-2 text-sm font-semibold text-white bg-orange-500 hover:bg-orange-600">
             Détails du cours
-          </button>
+          </Link>
           <button className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 text-sm hover:bg-slate-50">
             <PlayCircle className="h-4 w-4" /> Aperçu
           </button>
