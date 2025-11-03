@@ -30,16 +30,32 @@ export const HomePageCOURSES = [
 
 export const FAQ = [
   {
-    q: "Puis‑je migrer depuis Wix sans tout refaire ?",
-    a: "Les animations et la logique dépendantes de la plateforme Wix ne sont pas exportables. Cette page est un rebuild 100% autonome (React) prêt à héberger n'importe où.",
+    q: "Qu’est‑ce que AWI3 Learning ?",
+    a: "AWI3 Learning est une plateforme de formation dédiée à la montée en compétence des femmes africaines dans les domaines de l’innovation, de la blockchain, de l’IA et du Web 3. Nous proposons des parcours certifiants, des ateliers et des modules en ligne adaptés aux besoins du marché africain.",
   },
   {
-    q: "Comment intégrer mon LMS ?",
-    a: "Exposez vos endpoints (auth, catalog, progress). Nous brancherons les boutons CTA et la page cours sur ces APIs côté client ou via un BFF.",
+    q: "Comment puis‑je m’inscrire à un cours ?",
+    a: "Cliquez sur le bouton “S’inscrire” présent sur la fiche du cours. Vous serez redirigé vers la page d’authentification ou d’inscription, puis vous pourrez accéder à votre espace apprenante.",
   },
   {
-    q: "Puis‑je garder mon domaine ?",
-    a: "Oui. Pointez le DNS vers votre nouvel hébergement (Vercel, Netlify, Render…) et configurez SSL + redirections.",
+    q: "Les cours sont‑ils gratuits ?",
+    a: "Certains modules d’introduction sont gratuits (aperçus ou sessions découverte). Les parcours complets et certifiants sont payants et peuvent être pris en charge dans le cadre de programmes partenaires.",
+  },
+  {
+    q: "Puis‑je suivre les cours sur mobile ?",
+    a: "Oui. Tous les contenus sont compatibles avec les smartphones et tablettes. Vous pouvez apprendre où que vous soyez.",
+  },
+  {
+    q: "Comment puis‑je devenir formatrice sur la plateforme ?",
+    a: "AWI3 Learning accueille des femmes expertes souhaitant partager leurs connaissances. Contactez‑nous via le formulaire ou par email à contact@awi3.com pour présenter votre profil et vos modules.",
+  },
+  {
+    q: "Quels sont les domaines de formation proposés ?",
+    a: "Nos catégories principales sont la Blockchain, l’Intelligence Artificielle, le Web 3, le Developpement,  la transformation digitale et la gestion d’entreprise.",
+  },
+  {
+    q: "Comment accéder à mon certificat ?",
+    a: "Une fois toutes les leçons et évaluations terminées, votre certificat sera automatiquement généré dans votre tableau de bord personnel.",
   },
 ];
 
