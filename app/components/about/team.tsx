@@ -11,7 +11,7 @@ export default function Team(){
           {[{
             name: "Ama Marie Chantal Kouacou",
             role: "CEO & Fondatrice",
-            img: "https://images.unsplash.com/photo-1614281888571-9e2b3d0a6f6c?q=80&w=600&auto=format&fit=crop"
+            img: "/images/ama.jpg"
           }, {
             name: "Diane Inès Sanou",
             role: "Co-fondatrice & Mentore Blockchain",

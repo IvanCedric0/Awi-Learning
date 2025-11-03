@@ -2,6 +2,7 @@ import {HomePageCOURSES as COURSES } from "@/app/lib/data"
 import SectionTitle from "../ui/section-title"
 import CourseCard from "../ui/course-card"
 import { ArrowRight } from "lucide-react"
+import Link from "next/link"
 
 export default function Courses() {
     return (
@@ -18,9 +19,9 @@ export default function Courses() {
             ))}
           </div>
           <div className="mt-8 flex justify-center">
-            <button className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-5 py-3 text-sm hover:bg-slate-50">
+            <a href={'/courses'} className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-5 py-3 text-sm hover:bg-slate-50">
               Voir tout le catalogue <ArrowRight className="h-4 w-4" />
-            </button>
+            </a>
           </div>
         </div>
       </section>
