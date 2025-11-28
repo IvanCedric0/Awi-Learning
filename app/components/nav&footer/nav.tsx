@@ -33,7 +33,7 @@ export default function Nav() {
                 <a className="text-sm text-slate-600 hover:text-orange-600" href="/contact">Contact</a>
             </nav>
             <div className="flex items-center gap-2">
-                <Button>Se connecter</Button>
+                <a href="/auth" className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-5 py-3 text-sm text-slate-900 hover:bg-slate-50">Se connecter</a>
                 <Button primary>
                 {BRAND.ctaPrimary}
                 <ArrowRight className="h-4 w-4" />
