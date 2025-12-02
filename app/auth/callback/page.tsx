@@ -8,29 +8,29 @@ export default function AuthCallbackPage() {
   const router = useRouter();
 
   useEffect(() => {
-    const supabase = createSupabaseBrowser();
+    const run = async () => {
+      const supabase = createSupabaseBrowser();
 
-    (async () => {
-      // 👉 Use the full URL so Supabase can read `code` and other params
-      const url = window.location.href;
+      // 👇 With `detectSessionInUrl: true`, this call makes Supabase:
+      // - read the tokens from the URL
+      // - store the session (cookies/localStorage)
+      const { data, error } = await supabase.auth.getUser();
 
-      const { data, error } = await supabase.auth.exchangeCodeForSession(url);
+      console.log('callback getUser result:', { user: data.user, error });
 
-      console.log('exchangeCodeForSession result:', { data, error });
-
-      if (error) {
-        router.replace(`/auth?error=${encodeURIComponent(error.message)}`);
-      } else {
+      if (data.user && !error) {
         router.replace('/dashboard');
+      } else {
+        router.replace('/auth?error=auth_failed');
       }
-    })();
+    };
+
+    run();
   }, [router]);
 
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <p className="text-sm text-slate-600">
-        Connexion en cours, un instant…
-      </p>
+      <p className="text-sm text-slate-600">Connexion en cours, un instant…</p>
     </div>
   );
 }
