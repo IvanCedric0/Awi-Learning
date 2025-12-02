@@ -1,6 +1,8 @@
 import { createClient } from '@/app/lib/supabase/supabaseServer';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
+import Header from '../components/dashboard/header';
+import Hero from '../components/dashboard/hero';
 
 type EnrollmentRow = {
   course: {
@@ -59,74 +61,25 @@ export default async function Dashboard() {
   return (
     <main className="min-h-screen bg-slate-50">
       {/* Top bar */}
-      <header className=" border-slate-200">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-2 py-4">
-          <div className="flex items-center gap-2 bg-orange-500 rounded-2xl">
-            <div className="flex flex-col">
-              <span className="text-sm p-4 font-semibold text-white">
-                Tableau de bord apprenante
-              </span>
-            </div>
-          </div>
-          <div className="flex items-center gap-3 text-right bg-white rounded-2xl p-3 px-4 border-dashed border border-slate-200 ">
-            <div className="hidden text-xs text-slate-500 sm:block">
-              <p className="font-medium text-slate-700">
-                Bonjour,
-              </p>
-              <p className="truncate text-[11px] text-slate-500">
-                {user.email}
-              </p>
-            </div>
-            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-orange-100 text-xs font-semibold text-orange-700">
-              {user.email?.[0]?.toUpperCase() ?? 'A'}
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header user={user} />
 
       {/* Main content */}
-      <div className="mx-auto grid max-w-6xl gap-6 px-4 py-6 md:grid-cols-[2fr,1.1fr]">
+      <div className="mx-auto grid max-w-6xl gap-5 px-3 py-5 sm:gap-6 sm:px-4 sm:py-6 lg:grid-cols-[2fr,1.1fr]">
         {/* Left column */}
-        <section className="space-y-6">
+        <section className="space-y-5 sm:space-y-6">
           {/* Hero / Welcome */}
-          <div className="overflow-hidden rounded-2xl bg-linear-to-r from-orange-500 via-orange-400 to-amber-300 p-[1px] shadow-sm">
-            <div className="flex h-full flex-col justify-between gap-4 rounded-2xl bg-white/95 px-5 py-5 md:flex-row md:items-center md:px-7">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-orange-500">
-                  Bienvenue sur votre espace
-                </p>
-                <h1 className="mt-2 text-xl font-bold text-slate-900 md:text-2xl">
-                  Continuer à apprendre avec AWI3 Learning
-                </h1>
-                <p className="mt-2 text-sm text-slate-600 max-w-lg">
-                  Retrouvez vos cours en cours, vos certificats à venir et les
-                  prochains modules à suivre. Avancez à votre rythme.
-                </p>
-              </div>
-              <div className="flex flex-col items-end gap-2">
-                <Link
-                  href="/courses"
-                  className="inline-flex items-center rounded-xl bg-orange-600 px-4 py-2 text-xs font-semibold text-white shadow hover:bg-orange-700"
-                >
-                  Explorer les cours
-                </Link>
-                <span className="text-[11px] text-slate-500">
-                  Prochaine étape : choisir ou poursuivre un parcours
-                </span>
-              </div>
-            </div>
-          </div>
+          <Hero />
 
           {/* Continue learning */}
           <div className="space-y-3">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-wrap items-center justify-between gap-2">
               <h2 className="text-sm font-semibold text-slate-900">
                 Continuer votre apprentissage
               </h2>
               {firstCourse && (
                 <Link
                   href={`/course/${firstCourse.slug}`}
-                  className="text-xs font-medium text-orange-600 hover:underline"
+                  className="text-[11px] font-medium text-orange-600 hover:underline sm:text-xs"
                 >
                   Voir le cours
                 </Link>
@@ -138,7 +91,7 @@ export default async function Dashboard() {
                 href={`/course/${firstCourse.slug}`}
                 className="flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm hover:border-orange-300 hover:shadow-md md:flex-row"
               >
-                <div className="h-32 w-full overflow-hidden rounded-xl bg-slate-100 md:w-40">
+                <div className="h-28 w-full overflow-hidden rounded-xl bg-slate-100 sm:h-32 md:w-40">
                   {firstCourse.thumbnail ? (
                     <img
                       src={firstCourse.thumbnail}
@@ -146,23 +99,23 @@ export default async function Dashboard() {
                       className="h-full w-full object-cover"
                     />
                   ) : (
-                    <div className="flex h-full w-full items-center justify-center text-xs text-slate-400">
+                    <div className="flex h-full w-full items-center justify-center text-[11px] text-slate-400">
                       Aperçu du cours
                     </div>
                   )}
                 </div>
-                <div className="flex-1">
-                  <p className="text-[11px] font-semibold uppercase tracking-wide text-orange-500">
+                <div className="flex-1 space-y-2">
+                  <p className="text-[10px] font-semibold uppercase tracking-wide text-orange-500 sm:text-[11px]">
                     {firstCourse.category}
                   </p>
-                  <h3 className="mt-1 text-sm font-semibold text-slate-900">
+                  <h3 className="text-sm font-semibold text-slate-900 sm:text-base">
                     {firstCourse.title}
                   </h3>
-                  <p className="mt-1 text-xs text-slate-500">
+                  <p className="text-[11px] text-slate-500">
                     Niveau : {firstCourse.level ?? 'À définir'}
                   </p>
-                  <div className="mt-3">
-                    <div className="flex items-center justify-between text-[11px] text-slate-500">
+                  <div className="pt-1.5">
+                    <div className="flex items-center justify-between text-[10px] text-slate-500 sm:text-[11px]">
                       <span>Progression estimée</span>
                       <span>{firstCourse.progress}%</span>
                     </div>
@@ -176,7 +129,7 @@ export default async function Dashboard() {
                 </div>
               </Link>
             ) : (
-              <div className="rounded-2xl border border-dashed border-slate-300 bg-white px-4 py-6 text-sm text-slate-600">
+              <div className="rounded-2xl border border-dashed border-slate-300 bg-white px-4 py-5 text-[11px] leading-relaxed text-slate-600 sm:text-sm">
                 Vous n’êtes pas encore inscrite à un cours.
                 <br />
                 <Link href="/courses" className="font-semibold text-orange-600">
@@ -189,11 +142,11 @@ export default async function Dashboard() {
 
           {/* Enrolled courses grid */}
           <div className="space-y-3">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-wrap items-center justify-between gap-2">
               <h2 className="text-sm font-semibold text-slate-900">
                 Vos cours
               </h2>
-              <span className="text-[11px] text-slate-500">
+              <span className="text-[10px] text-slate-500 sm:text-[11px]">
                 {withProgress.length} cours inscrits
               </span>
             </div>
@@ -206,7 +159,7 @@ export default async function Dashboard() {
                     href={`/course/${course.slug}`}
                     className="flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm hover:border-orange-300 hover:shadow-md"
                   >
-                    <div className="h-28 w-full bg-slate-100">
+                    <div className="h-24 w-full bg-slate-100 sm:h-28">
                       {course.thumbnail ? (
                         <img
                           src={course.thumbnail}
@@ -214,23 +167,23 @@ export default async function Dashboard() {
                           className="h-full w-full object-cover"
                         />
                       ) : (
-                        <div className="flex h-full w-full items-center justify-center text-[11px] text-slate-400">
+                        <div className="flex h-full w-full items-center justify-center text-[10px] text-slate-400 sm:text-[11px]">
                           Illustration du cours
                         </div>
                       )}
                     </div>
                     <div className="flex flex-1 flex-col gap-2 px-4 py-3">
-                      <p className="text-[11px] font-semibold uppercase tracking-wide text-orange-500">
+                      <p className="text-[10px] font-semibold uppercase tracking-wide text-orange-500 sm:text-[11px]">
                         {course.category}
                       </p>
                       <h3 className="line-clamp-2 text-sm font-semibold text-slate-900">
                         {course.title}
                       </h3>
-                      <p className="text-[11px] text-slate-500">
+                      <p className="text-[10px] text-slate-500 sm:text-[11px]">
                         Niveau : {course.level ?? 'À définir'}
                       </p>
-                      <div className="mt-auto">
-                        <div className="flex items-center justify-between text-[11px] text-slate-500">
+                      <div className="mt-auto pt-1.5">
+                        <div className="flex items-center justify-between text-[10px] text-slate-500 sm:text-[11px]">
                           <span>Progression</span>
                           <span>{course.progress}%</span>
                         </div>
@@ -246,7 +199,7 @@ export default async function Dashboard() {
                 ))}
               </div>
             ) : (
-              <div className="rounded-2xl border border-dashed border-slate-300 bg-white px-4 py-6 text-sm text-slate-600">
+              <div className="rounded-2xl border border-dashed border-slate-300 bg-white px-4 py-5 text-[11px] leading-relaxed text-slate-600 sm:text-sm">
                 Dès que vous vous inscrirez à un cours, il apparaîtra ici.
               </div>
             )}
@@ -254,43 +207,51 @@ export default async function Dashboard() {
         </section>
 
         {/* Right column: stats & quick links */}
-        <aside className="space-y-4">
-          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+        <aside className="space-y-4 sm:space-y-5 lg:space-y-4">
+          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5">
             <h2 className="text-sm font-semibold text-slate-900">
               Votre progression
             </h2>
-            <p className="mt-1 text-xs text-slate-500">
+            <p className="mt-1 text-[11px] text-slate-500 sm:text-xs">
               Statistiques globales (estimées pour l’instant).
             </p>
-            <div className="mt-4 grid grid-cols-2 gap-3 text-center text-xs">
+            <div className="mt-4 grid grid-cols-2 gap-3 text-center text-[11px] sm:text-xs">
               <div className="rounded-xl bg-orange-50 px-3 py-3">
-                <p className="text-[11px] text-orange-600">Cours suivis</p>
+                <p className="text-[10px] text-orange-600 sm:text-[11px]">
+                  Cours suivis
+                </p>
                 <p className="mt-1 text-lg font-bold text-orange-700">
                   {withProgress.length}
                 </p>
               </div>
               <div className="rounded-xl bg-slate-50 px-3 py-3">
-                <p className="text-[11px] text-slate-500">Modules complétés</p>
+                <p className="text-[10px] text-slate-500 sm:text-[11px]">
+                  Modules complétés
+                </p>
                 <p className="mt-1 text-lg font-bold text-slate-800">0</p>
               </div>
               <div className="rounded-xl bg-slate-50 px-3 py-3">
-                <p className="text-[11px] text-slate-500">Heures estimées</p>
+                <p className="text-[10px] text-slate-500 sm:text-[11px]">
+                  Heures estimées
+                </p>
                 <p className="mt-1 text-lg font-bold text-slate-800">
                   ~{withProgress.length * 3}
                 </p>
               </div>
               <div className="rounded-xl bg-slate-50 px-3 py-3">
-                <p className="text-[11px] text-slate-500">Certificats</p>
+                <p className="text-[10px] text-slate-500 sm:text-[11px]">
+                  Certificats
+                </p>
                 <p className="mt-1 text-lg font-bold text-slate-800">0</p>
               </div>
             </div>
           </div>
 
-          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5">
             <h2 className="text-sm font-semibold text-slate-900">
               Actions rapides
             </h2>
-            <div className="mt-3 space-y-2 text-xs">
+            <div className="mt-3 space-y-2 text-[11px] sm:text-xs">
               <Link
                 href="/courses"
                 className="flex items-center justify-between rounded-xl border border-slate-200 px-3 py-2 hover:border-orange-300 hover:bg-orange-50"
@@ -300,14 +261,14 @@ export default async function Dashboard() {
               </Link>
               <Link
                 href="/contact"
-                className="flex items-center justify-between rounded-xl border border-slate-200 px-3 py-2 hover:border-orange-50"
+                className="flex items-center justify-between rounded-xl border border-slate-200 px-3 py-2 hover:border-orange-200 hover:bg-orange-50/40"
               >
                 <span>Contacter l’équipe AWI3</span>
                 <span className="text-[10px] text-slate-500">→</span>
               </Link>
               <Link
                 href="/about"
-                className="flex items-center justify-between rounded-xl border border-slate-200 px-3 py-2 hover:border-orange-50"
+                className="flex items-center justify-between rounded-xl border border-slate-200 px-3 py-2 hover:border-orange-200 hover:bg-orange-50/40"
               >
                 <span>À propos de la plateforme</span>
                 <span className="text-[10px] text-slate-500">→</span>
