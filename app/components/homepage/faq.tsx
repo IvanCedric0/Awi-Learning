@@ -1,5 +1,5 @@
 import SectionTitle from "../ui/section-title";
-import { FAQ } from "@/app/lib/data";
+import { FAQ } from "@/app/lib/staticData";
 import FAQItem from "../ui/faq-items";
 export default function Faq(){
     return(

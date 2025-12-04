@@ -1,4 +1,4 @@
-import { HomePageCOURSES as COURSES } from "@/app/lib/data";
+import { HomePageCOURSES as COURSES } from "@/app/lib/staticData";
 import {BookOpen, Shield, CheckCircle2, PlayCircle } from "lucide-react";
 import { motion} from "motion/react";
 import { Pill } from "./pill";

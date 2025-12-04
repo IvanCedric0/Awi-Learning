@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { COURSES } from "@/app/lib/data";
+import { COURSES } from "@/app/lib/staticData";
 
 export default async function CourseDetailPage({
   params,

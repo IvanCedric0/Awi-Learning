@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { motion } from "motion/react";
-import type { Course } from "@/app/lib/data";
+import type { Course } from "@/app/lib/types";
 
 export function CourseCard({ course }: { course: Course }) {
   return (
@@ -16,7 +16,7 @@ export function CourseCard({ course }: { course: Course }) {
         <h3 className="mt-2 text-lg font-semibold text-slate-900">{course.title}</h3>
         <p className="mt-2 text-sm text-slate-700 leading-relaxed">{course.description}</p>
         <div className="mt-4 flex items-center justify-between">
-          <span className="text-xs text-slate-500">{course.level} • ~{course.durationH}h</span>
+          <span className="text-xs text-slate-500">{course.level} • ~{course.duration}h</span>
           <Link href={`/courses/${course.slug}`} className="inline-block text-sm font-semibold text-orange-600 hover:underline">
             Découvrir
           </Link>

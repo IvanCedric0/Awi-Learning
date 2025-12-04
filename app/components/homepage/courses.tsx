@@ -1,8 +1,7 @@
-import {HomePageCOURSES as COURSES } from "@/app/lib/data"
+import {HomePageCOURSES as COURSES } from "@/app/lib/staticData"
 import SectionTitle from "../ui/section-title"
 import CourseCard from "../ui/course-card"
 import { ArrowRight } from "lucide-react"
-import Link from "next/link"
 
 export default function Courses() {
     return (

@@ -6,7 +6,7 @@ export default function Header({user}: HeaderProps) {
     return (
         <header className=" border-slate-200">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-2 py-4">
-          <div className="flex items-center gap-2 bg-orange-500 rounded-2xl">
+          <div className="flex items-center gap-2 bg-linear-to-t from-orange-500 to-orange-400 rounded-2xl">
             <div className="flex flex-col">
               <span className="text-sm p-4 font-semibold text-white">
                 Tableau de bord apprenante

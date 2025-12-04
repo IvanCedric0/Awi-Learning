@@ -4,7 +4,6 @@ import Benefits from "./components/homepage/benefits";
 import Courses from "./components/homepage/courses";
 import CallToAction from "./components/homepage/cta";
 import Faq from "./components/homepage/faq";
-import Footer from "./components/nav&footer/footer";
 
 // --- THEME: Primary = Orange on White ---
 const THEME = {
