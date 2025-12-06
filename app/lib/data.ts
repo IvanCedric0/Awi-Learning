@@ -34,3 +34,20 @@ export async function FetchAllCourses(): Promise<Course[]> {
   })) as Course[];
 }
 
+export async function FetchCourse(slug: string): Promise<any | null> {
+  const supabase = await createClient();
+  const { data, error } = await supabase
+  .from("courses")
+  .select(`
+    id,
+    slug,
+    title,
+    level,
+    duration,
+    modules(id, title, ord, lessons(id, title, ord, duration_min, video_url, body_md))
+    `)
+  .eq("slug", slug)
+  .single();
+  if (error || !data) return null;
+  return data;
+}

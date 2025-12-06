@@ -78,7 +78,7 @@ export default async function Dashboard() {
               </h2>
               {firstCourse && (
                 <Link
-                  href={`/course/${firstCourse.slug}`}
+                  href={`/dashboard/my_course/${firstCourse.slug}`}
                   className="text-[11px] font-medium text-orange-600 hover:underline sm:text-xs"
                 >
                   Voir le cours
@@ -156,7 +156,7 @@ export default async function Dashboard() {
                 {withProgress.map((course) => (
                   <Link
                     key={course.id}
-                    href={`/course/${course.slug}`}
+                    href={`/dashboard/my_course/${course.slug}`}
                     className="flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm hover:border-orange-300 hover:shadow-md"
                   >
                     <div className="h-24 w-full bg-slate-100 sm:h-28">
