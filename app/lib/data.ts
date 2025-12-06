@@ -21,12 +21,16 @@ export async function FetchAllCourses(): Promise<Course[]> {
     thumbnail,
     level,
     duration,
-    bullets
+    bullets,
+    modules(id, title, ord, summary)
     `)
     if(error){
       console.log("Database error: ", error)
       return[]
     }
-    return (data ?? []) as Course[];
+    return (data ?? []).map((course) => ({
+    ...course,
+    modules: course.modules ?? [],  // Set modules to an empty array if not available
+  })) as Course[];
 }
 

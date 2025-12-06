@@ -69,7 +69,7 @@ export type Courses = {
 
 export const COURSES: Courses[] = [
   {
-    slug: "introduction-blockchain",
+    slug: "intro-blockchain",
     title: "Introduction à la Blockchain",
     category: "Blockchain",
     description:

@@ -1,13 +1,13 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { COURSES } from "@/app/lib/staticData";
-
+import { FetchAllCourses } from "@/app/lib/data";
 export default async function CourseDetailPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
     const {slug} = await params;
+    const COURSES = await FetchAllCourses();
     const course = COURSES.find((c) => c.slug === slug);
   if (!course) return notFound();
 
@@ -21,7 +21,7 @@ export default async function CourseDetailPage({
             <p className="text-xs uppercase tracking-wide text-orange-600 font-medium">{course.category}</p>
             <h1 className="mt-2 text-3xl font-bold text-slate-900">{course.title}</h1>
             <p className="mt-3 text-slate-700">{course.description}</p>
-            <p className="mt-3 text-sm text-slate-600">Niveau: {course.level} • Durée estimée: ~{course.durationH}h • Leçons: {course.lessons.length}</p>
+            <p className="mt-3 text-sm text-slate-600">Niveau: {course.level} • Durée estimée: ~{course.duration}h • Modules: {course.modules?.length}</p>
             <div className="mt-5 flex flex-wrap gap-3">
               <Link href={`/auth`} className="rounded-xl bg-orange-600 px-5 py-2.5 text-white shadow hover:bg-orange-700">S’inscrire</Link>
               <Link href={`/courses`} className="rounded-xl border border-slate-300 px-5 py-2.5 text-slate-800 hover:border-orange-400 hover:text-orange-600">Retour aux cours</Link>
@@ -34,15 +34,12 @@ export default async function CourseDetailPage({
       <section className="mx-auto max-w-6xl px-4 py-12">
         <h2 className="text-xl font-semibold text-slate-900">Programme du cours</h2>
         <div className="mt-6 divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white">
-          {course.lessons.map((l, idx) => (
-            <div key={l.id} className="flex items-center justify-between px-4 py-4">
+          {course.modules?.map((m, idx) => (
+            <div key={m.id} className="flex items-center justify-between px-4 py-4">
               <div>
-                <p className="text-sm font-medium text-slate-900">{idx + 1}. {l.title}</p>
-                <p className="text-xs text-slate-500">{l.durationMin ? `${l.durationMin} min` : "Durée variable"} {l.freePreview ? "• Aperçu gratuit" : ""}</p>
+                <p className="text-sm font-medium text-slate-900">{m.title}</p>
+                <p className="text-xs text-slate-500 mt-2">{m.summary}</p>
               </div>
-              {l.freePreview && (
-                <Link href={`/lesson/${l.id}`} className="text-sm font-semibold text-orange-600 hover:underline">Prévisualiser</Link>
-              )}
             </div>
           ))}
         </div>
